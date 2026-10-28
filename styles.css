@@ -112,3 +112,287 @@ hr {
     line-height: 1.8;
     color: #a5a5a5;
 }
+
+/* ========================================
+   GREETING SECTION HEADER
+======================================== */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-header h2,
+.interactive-section h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/* ========================================
+   THEME BUTTON AND ICON ANIMATION
+======================================== */
+
+.theme-button {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c7c7c7;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.theme-button i {
+    display: inline-block;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        color 0.3s ease;
+}
+
+/* Fade and rotate the icon when switching themes */
+.theme-button i.fade-out {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.4);
+}
+
+
+/* ========================================
+   DARK THEME — DEFAULT
+======================================== */
+
+body.dark-theme {
+    background: linear-gradient(to top right, #1203ed, #fb6000);
+    background-attachment: fixed;
+    color: #fffdfd;
+}
+
+body.dark-theme .profile-card {
+    background-color: rgb(60, 64, 76);
+    border-color: #828181;
+}
+
+body.dark-theme .subtitle {
+    color: #bebdbd;
+}
+
+body.dark-theme .about p {
+    color: #a5a5a5;
+}
+
+/* Dark mode textbox */
+body.dark-theme #visitor-name {
+    background-color: #252b38;
+    color: #ffffff;
+    border-color: #555e70;
+}
+
+body.dark-theme #visitor-name::placeholder {
+    color: #b7bdc9;
+}
+
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+body:not(.dark-theme) {
+    background: linear-gradient(to top right, #fb6000, #1203ed);
+    background-attachment: fixed;
+    color: #222222;
+}
+
+body:not(.dark-theme) .profile-card {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+}
+
+body:not(.dark-theme) .subtitle {
+    color: #555555;
+}
+
+body:not(.dark-theme) .about p {
+    color: #555555;
+}
+
+/* Light mode textbox */
+body:not(.dark-theme) #visitor-name {
+    background-color: #ffffff;
+    color: #222222;
+    border-color: #c7c7c7;
+}
+
+body:not(.dark-theme) #visitor-name::placeholder {
+    color: #777777;
+}
+
+body:not(.dark-theme) .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+body:not(.dark-theme) .social-button:hover {
+    background-color: #000000;
+    color: #0a66c2;
+}
+
+/* ========================================
+   NAME INPUT
+======================================== */
+
+.greeting-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#visitor-name {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #c7c7c7;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.2s ease;
+}
+
+#visitor-name:focus {
+    border-color: #1683ff;
+    box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.2);
+}
+
+
+/* ========================================
+   SEND BUTTON
+======================================== */
+
+.send-button {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    background-color: #1683ff;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.send-button:hover {
+    background-color: #0069dc;
+    transform: translateX(2px);
+}
+
+.send-button:active {
+    transform: scale(0.95);
+}
+
+
+/* ========================================
+   GREETING RESPONSE
+======================================== */
+
+#greeting {
+    min-height: 21px;
+    margin: 14px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+
+    transition:
+        color 0.4s ease,
+        opacity 0.25s ease;
+}
+
+/* ========================================
+   SUN HOVER EFFECT — DARK MODE
+======================================== */
+
+body.dark-theme .theme-button:hover {
+    background-color: #fff3b0;
+    border-color: #ffd43b;
+    transform: rotate(12deg);
+}
+
+body.dark-theme .theme-button:hover i {
+    color: #f5a400;
+    transform: rotate(25deg) scale(1.15);
+}
+
+
+/* ========================================
+   MOON HOVER EFFECT — LIGHT MODE
+======================================== */
+
+body:not(.dark-theme) .theme-button:hover {
+    background-color: #dbeafe;
+    border-color: #93b4e8;
+    transform: rotate(-12deg);
+}
+
+body:not(.dark-theme) .theme-button:hover i {
+    color: #173b7a;
+    transform: rotate(-20deg) scale(1.15);
+}
+
+
+/* ========================================
+   SMOOTH THEME COLOR TRANSITIONS
+======================================== */
+
+body,
+.profile-card,
+.identity h1,
+.subtitle,
+.about h2,
+.about p,
+hr,
+.interactive-section,
+.social-button,
+.theme-button,
+.send-button {
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
