@@ -10,6 +10,7 @@ I'm a Computer Engineering student at the University of Florida, Class of 2030, 
 
 - Personal profile with a banner and headshot
 - Links to GitHub and LinkedIn
+- Interactive goals list
 - Interactive greeting that responds to a visitor's name
 - Dark and light theme toggle
 - Responsive styling with CSS
