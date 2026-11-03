@@ -1,4 +1,4 @@
-
+// Lab 2; Greeting section, theme toggle functionality
 const nameInput = document.getElementById("visitor-name");
 const greetButton = document.getElementById("greet-button");
 const greeting = document.getElementById("greeting");
@@ -58,4 +58,76 @@ themeButton.addEventListener("click", function() {
             isAnimating = false;
         }, 250);
     }, 250);
+});
+
+//Lab 3; Goals section
+const goals = ["Learn JavaScript", "Practice Git"]; 
+const goalForm = document.getElementById("goal-form"); 
+const goalInput = document.getElementById("goal-input"); 
+const goalList = document.getElementById("goal-list"); 
+const goalCount = document.getElementById("goal-count"); 
+const goalMessage = document.getElementById("goal-message");
+
+// Makes message time out after three seconds
+let goalMessageTimer;
+function showGoalMessage(message) {
+    clearTimeout(goalMessageTimer);
+
+    goalMessage.textContent = message;
+    goalMessage.classList.add("goal-message-error");
+
+    goalMessageTimer = setTimeout(function () {
+        goalMessage.textContent = "";
+        goalMessage.classList.remove("goal-message-error");
+    }, 5000);
+}
+
+function renderGoals() {  
+    goalList.replaceChildren();  
+    
+    goals.forEach(function (goal, index) {    
+        const item = document.createElement("li");    
+        
+        const label = document.createElement("span");    
+        label.textContent = goal;    
+        item.append(label);
+
+        //Remove button and minus icon
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "remove-goal-button";
+        removeButton.setAttribute("aria-label", "Remove " + goal);
+        removeButton.title = "Remove goal";
+        removeButton.innerHTML = '<i class="fa-solid fa-circle-minus" aria-hidden="true"></i>';
+
+        removeButton.addEventListener("click", function () {
+            goals.splice(index, 1);
+            renderGoals();
+            showGoalMessage("Goal removed.");
+        });
+
+        item.append(removeButton);
+        goalList.append(item);  
+    });  
+    goalCount.textContent = goals.length + " Goals:"; 
+}
+
+renderGoals();
+
+goalForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const text = goalInput.value.trim();
+
+    if (text === "") {
+        showGoalMessage("Enter a goal first.");
+        return;
+    }
+
+    goals.push(text);
+    renderGoals();
+
+    goalInput.value = "";
+    showGoalMessage("Goal added.");
+    goalInput.focus();
 });
