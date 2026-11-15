@@ -61,7 +61,7 @@ themeButton.addEventListener("click", function() {
 });
 
 //Lab 3; Goals section
-const goals = ["Learn JavaScript", "Practice Git"]; 
+const goals = [  { text: "Learn JavaScript", done: false },  { text: "Practice Git", done: true } ]; 
 const goalForm = document.getElementById("goal-form"); 
 const goalInput = document.getElementById("goal-input"); 
 const goalList = document.getElementById("goal-list"); 
@@ -89,14 +89,14 @@ function renderGoals() {
         const item = document.createElement("li");    
         
         const label = document.createElement("span");    
-        label.textContent = goal;    
+        label.textContent = goal.text;    
         item.append(label);
 
         //Remove button and minus icon
         const removeButton = document.createElement("button");
         removeButton.type = "button";
         removeButton.className = "remove-goal-button";
-        removeButton.setAttribute("aria-label", "Remove " + goal);
+        removeButton.setAttribute("aria-label", "Remove " + goal.text);
         removeButton.title = "Remove goal";
         removeButton.innerHTML = '<i class="fa-solid fa-circle-minus" aria-hidden="true"></i>';
 
@@ -124,7 +124,7 @@ goalForm.addEventListener("submit", function (event) {
         return;
     }
 
-    goals.push(text);
+    goals.push({ text: text, done: false });
     renderGoals();
 
     goalInput.value = "";
