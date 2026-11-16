@@ -88,9 +88,19 @@ function renderGoals() {
     goals.forEach(function (goal, index) {    
         const item = document.createElement("li");    
         
+        // Makes Checkbox
+        const checkbox = document.createElement("input"); 
+        checkbox.type = "checkbox"; 
+        checkbox.checked = goal.done; 
+        checkbox.setAttribute("aria-label", "Complete " + goal.text); 
+        checkbox.addEventListener("change", function () {  
+            goal.done = checkbox.checked;  
+            renderGoals(); });
+
         const label = document.createElement("span");    
-        label.textContent = goal.text;    
-        item.append(label);
+        label.textContent = goal.text;
+        label.classList.toggle("goal-done", goal.done);    
+        item.append(checkbox, label);
 
         //Remove button and minus icon
         const removeButton = document.createElement("button");
@@ -109,7 +119,12 @@ function renderGoals() {
         item.append(removeButton);
         goalList.append(item);  
     });  
-    goalCount.textContent = goals.length + " Goals:"; 
+    const completed = goals.filter(function (goal) {  
+        return goal.done; 
+    }).length; 
+    const remaining = goals.length - completed; 
+    goalCount.textContent = "Goals: " + goals.length +  
+    " | Completed: " + completed + " | Remaining: " + remaining; 
 }
 
 renderGoals();
